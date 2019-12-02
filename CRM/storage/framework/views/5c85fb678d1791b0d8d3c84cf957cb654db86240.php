@@ -1,0 +1,1 @@
+<?php echo e(csrf_token()); ?><?php /**PATH /home/cyberun-8/Bureau/projetLaravel/CRM/CRM/resources/views/accueil.blade.php ENDPATH**/ ?>
