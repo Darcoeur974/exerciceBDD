@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ContactsModel extends Model
+class ProjetsModel extends Model
 {
-    protected $table = "contacts";
+    protected $table = "projets";
 
-    protected $fillable = ["nomEntreprise", "prenom", "tel", "email", "poste"];
+    protected $fillable = ["nomProjet"];
 
     public $timestamps = false;
 

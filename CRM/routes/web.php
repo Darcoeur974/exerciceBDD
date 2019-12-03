@@ -20,5 +20,12 @@ Route::prefix('/api')->group(function () {
     Route::prefix('/clients')->group(function () {
         Route::post('/store', 'ClientsController@add');
         Route::get('/', 'ClientsController@index');
+        Route::get('/{id}/projets', 'ProjetsController@getByClients');
+    });
+    Route::prefix('/projets')->group(function () {
+        Route::post('/store', 'ProjetsController@store');
+        Route::get('/', 'ProjetsController@index');
     });
 });
+
+

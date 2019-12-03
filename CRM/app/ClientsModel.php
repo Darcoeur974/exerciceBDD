@@ -13,10 +13,18 @@ class ClientsModel extends Model
 
     public function adresse()
     {
-        return $this->belongsTo('App\AdressesModel', "id_adresse");
+        return $this->belongsTo(AdressesModel::class, "id_adresse");
     }
     public function contacts()
     {
-        return $this->hasMany('App\ContactsModel', 'id_client');
+        return $this->hasMany(ContactsModel::class, 'id_client');
+    }
+    public function commentaires()
+    {
+        return $this->hasMany(CommentairesClientsModel::class, 'id_client');
+    }
+    public function projets()
+    {
+        return $this->hasMany(ProjetsModel::class, 'id_client');
     }
 }
