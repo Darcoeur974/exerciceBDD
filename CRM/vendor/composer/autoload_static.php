@@ -99,6 +99,7 @@ class ComposerStaticInitce3a1ffdf70499e2cc3e5160a765385e
         'L' => 
         array (
             'League\\Flysystem\\' => 17,
+            'Laravel\\Ui\\' => 11,
             'Laravel\\Tinker\\' => 15,
         ),
         'J' => 
@@ -304,6 +305,10 @@ class ComposerStaticInitce3a1ffdf70499e2cc3e5160a765385e
         array (
             0 => __DIR__ . '/..' . '/league/flysystem/src',
         ),
+        'Laravel\\Ui\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel/ui/src',
+        ),
         'Laravel\\Tinker\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
@@ -409,6 +414,7 @@ class ComposerStaticInitce3a1ffdf70499e2cc3e5160a765385e
     public static $classMap = array (
         'App\\AdressesModel' => __DIR__ . '/../..' . '/app/AdressesModel.php',
         'App\\ClientsModel' => __DIR__ . '/../..' . '/app/ClientsModel.php',
+        'App\\CommentairesClientsModel' => __DIR__ . '/../..' . '/app/CommentairesClientsModel.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\ContactsModel' => __DIR__ . '/../..' . '/app/ContactsModel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -421,6 +427,7 @@ class ComposerStaticInitce3a1ffdf70499e2cc3e5160a765385e
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\ClientsController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClientsController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\ProjetsController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProjetsController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -431,12 +438,17 @@ class ComposerStaticInitce3a1ffdf70499e2cc3e5160a765385e
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Resources\\AdressesRessource' => __DIR__ . '/../..' . '/app/Http/Resources/AdressesRessource.php',
         'App\\Http\\Resources\\ClientsRessource' => __DIR__ . '/../..' . '/app/Http/Resources/ClientsRessource.php',
+        'App\\Http\\Resources\\CommentairesClientsRessource' => __DIR__ . '/../..' . '/app/Http/Resources/CommentairesClientsRessource.php',
         'App\\Http\\Resources\\ContactsRessource' => __DIR__ . '/../..' . '/app/Http/Resources/ContactsRessource.php',
+        'App\\Http\\Resources\\ProjetsRessource' => __DIR__ . '/../..' . '/app/Http/Resources/ProjetsRessource.php',
+        'App\\Http\\Resources\\TypeCommentairesClientsRessource' => __DIR__ . '/../..' . '/app/Http/Resources/TypeCommentairesClientsRessource.php',
+        'App\\ProjetsModel' => __DIR__ . '/../..' . '/app/ProjetsModel.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\TypeCommentairesClientsModel' => __DIR__ . '/../..' . '/app/TypeCommentairesClientsModel.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonImmutable' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonImmutable.php',
@@ -2094,6 +2106,13 @@ class ComposerStaticInitce3a1ffdf70499e2cc3e5160a765385e
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
         'Laravel\\Tinker\\TinkerServiceProvider' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerServiceProvider.php',
+        'Laravel\\Ui\\AuthCommand' => __DIR__ . '/..' . '/laravel/ui/src/AuthCommand.php',
+        'Laravel\\Ui\\Presets\\Bootstrap' => __DIR__ . '/..' . '/laravel/ui/src/Presets/Bootstrap.php',
+        'Laravel\\Ui\\Presets\\Preset' => __DIR__ . '/..' . '/laravel/ui/src/Presets/Preset.php',
+        'Laravel\\Ui\\Presets\\React' => __DIR__ . '/..' . '/laravel/ui/src/Presets/React.php',
+        'Laravel\\Ui\\Presets\\Vue' => __DIR__ . '/..' . '/laravel/ui/src/Presets/Vue.php',
+        'Laravel\\Ui\\UiCommand' => __DIR__ . '/..' . '/laravel/ui/src/UiCommand.php',
+        'Laravel\\Ui\\UiServiceProvider' => __DIR__ . '/..' . '/laravel/ui/src/UiServiceProvider.php',
         'League\\Flysystem\\AdapterInterface' => __DIR__ . '/..' . '/league/flysystem/src/AdapterInterface.php',
         'League\\Flysystem\\Adapter\\AbstractAdapter' => __DIR__ . '/..' . '/league/flysystem/src/Adapter/AbstractAdapter.php',
         'League\\Flysystem\\Adapter\\AbstractFtpAdapter' => __DIR__ . '/..' . '/league/flysystem/src/Adapter/AbstractFtpAdapter.php',
