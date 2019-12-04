@@ -25,16 +25,3 @@ export default {
         this.getDatas();
     }
 };
-
-const test = new Vue({
-    el: '#formulaire',
-    data: {
-        nom: null
-    },
-    methods: {
-        validationFormulaire: function (e) {
-            console.log(this.nom);
-            e.preventDefault();
-        }
-    },
-});

@@ -40,7 +40,8 @@
                     </tr>
                 </tbody>
             </table>
-            <input class="submit" type="submit" value="submit">
+            <input type="submit" value="submit">
         </form>
     </div>
 </template>
+<script src="./formulaire.js"></script>
