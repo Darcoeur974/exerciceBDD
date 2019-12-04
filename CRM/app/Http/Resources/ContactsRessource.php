@@ -17,7 +17,7 @@ class ContactsRessource extends JsonResource
         $donnee = new ClientsRessource($this->whenLoaded('client'));
         return [
             'id' => $this->id,
-            'nomEntreprise' => $this->nom,
+            'nom' => $this->nom,
             'prenom' => $this->prenom,
             'tel' => $this->tel,
             'email' => $this->email,

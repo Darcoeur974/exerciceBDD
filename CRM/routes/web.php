@@ -12,14 +12,12 @@
 */
 
 use App\Http\Controllers\AccueilController;
-
-Route::get('/', 'AccueilController@index');
-
+use App\Http\Controllers\ClientsController;
 
 Route::prefix('/api')->group(function () {
     Route::prefix('/clients')->group(function () {
-        Route::post('/store', 'ClientsController@add');
         Route::get('/', 'ClientsController@index');
+        Route::post('/store', 'ClientsController@add');
         Route::get('/{id}/projets', 'ProjetsController@getByClients');
     });
     Route::prefix('/projets')->group(function () {
@@ -28,4 +26,4 @@ Route::prefix('/api')->group(function () {
     });
 });
 
-
+Route::get('/{any}', 'PageController@index')->where('any', '.*');

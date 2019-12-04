@@ -8,5 +8,15 @@
 
         <title>Laravel</title>
 
+        <!-- vuenotify -->
 
-<script src="/js/app.js"></script>
+        <link href="{{ asset('css/app.css') }}">
+
+    </head>
+    <body>
+        <div id="app">
+            <layout></layout>
+        </div>
+        <script src="{{ asset('js/app.js') }}"></script>
+    </body>
+</html>

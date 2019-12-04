@@ -52,7 +52,7 @@ class ClientsController extends Controller
             'nom' => $validator['nom']
         ];
         $contact = [
-            'nomEntreprise' => $validator['nomEntreprise'],
+            'nom' => $validator['nomEntreprise'],
             'prenom' => $validator['prenom'],
             'tel' => $validator['tel'],
             'email' => $validator['email'],
