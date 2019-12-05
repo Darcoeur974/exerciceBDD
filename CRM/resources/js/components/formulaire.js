@@ -12,7 +12,8 @@ export default {
             prenom: null,
             tel: null,
             email: null,
-            poste: null
+            poste: null,
+            dialog: false,
         }
     },
     methods: {

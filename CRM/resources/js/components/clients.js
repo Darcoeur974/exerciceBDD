@@ -26,7 +26,6 @@ export default {
             this.clients = [];
             axios.get('/api/clients')
                 .then(({ data }) => {
-                    console.log();
                     data.data.forEach(_data => {
                         this.clients.push(this.formatData(_data));
                     })
@@ -37,6 +36,7 @@ export default {
         }
         ,
         formatData(data) {
+            console.log(data);
             return {
                 nom: data.nom,
                 adresse: data.adresse.adresse,

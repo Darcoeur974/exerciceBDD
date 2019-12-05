@@ -8,6 +8,7 @@
     <v-card>
       <v-card-text>
         <v-container>
+          <v-card-title>Ajouter un clients</v-card-title>
           <v-form id="formulaire" @submit="validationFormulaire" action method>
             <v-row>
               <v-col>
@@ -109,7 +110,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn type="submit" color="blue darken-1" text>Sauvegarder</v-btn>
+        <v-btn type="submit" color="blue darken-1" text @click="dialog = false">Sauvegarder</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>

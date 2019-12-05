@@ -1916,7 +1916,6 @@ __webpack_require__.r(__webpack_exports__);
       this.clients = [];
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/clients').then(function (_ref) {
         var data = _ref.data;
-        console.log();
         data.data.forEach(function (_data) {
           _this.clients.push(_this.formatData(_data));
         });
@@ -1926,6 +1925,7 @@ __webpack_require__.r(__webpack_exports__);
       this.clients.push(this.formatData(client));
     },
     formatData: function formatData(data) {
+      console.log(data);
       return {
         nom: data.nom,
         adresse: data.adresse.adresse,
@@ -1970,7 +1970,8 @@ __webpack_require__.r(__webpack_exports__);
       prenom: null,
       tel: null,
       email: null,
-      poste: null
+      poste: null,
+      dialog: false
     };
   },
   methods: {
@@ -2617,6 +2618,8 @@ var render = function() {
               _c(
                 "v-container",
                 [
+                  _c("v-card-title", [_vm._v("Ajouter un clients")]),
+                  _vm._v(" "),
                   _c(
                     "v-form",
                     {
@@ -2860,7 +2863,14 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-btn",
-                { attrs: { type: "submit", color: "blue darken-1", text: "" } },
+                {
+                  attrs: { type: "submit", color: "blue darken-1", text: "" },
+                  on: {
+                    click: function($event) {
+                      _vm.dialog = false
+                    }
+                  }
+                },
                 [_vm._v("Sauvegarder")]
               )
             ],
