@@ -22,7 +22,7 @@ class ClientsRessource extends JsonResource
             'id' => $this->id,
             'nom' => $this->nom,
             'adresse' => $donnee_addresse,
-            'contact' => $donnee_contact,
+            'contacts' => $donnee_contact,
             'projet' => $donnee_projet,
             'commentaire' => $donnee_commentaire
         ];

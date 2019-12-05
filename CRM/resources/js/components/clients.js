@@ -6,8 +6,19 @@ export default {
     components: { Formulaire },
     data() {
         return {
+            variableParent: 'Ajout de Client',
+            headers: [
+                { text: 'Nom', value: 'nom' },
+                { text: 'Adresse', value: 'adresse' },
+                { text: 'Code postal', value: 'code_postal' },
+                { text: 'Ville', value: 'ville' },
+                { text: 'Nom du contact', value: 'nomContact' },
+                { text: 'Prenom du contact', value: 'prenom' },
+                { text: 'Numero du contact', value: 'numero' },
+                { text: 'E-mail du contact', value: 'email' },
+                { text: 'poste du contact', value: 'poste' },
+            ],
             clients: [],
-            variableParent:'Toto est là!'
         }
     },
     methods: {
@@ -15,15 +26,28 @@ export default {
             this.clients = [];
             axios.get('/api/clients')
                 .then(({ data }) => {
-                    console.log("Data :" + data);
+                    console.log();
                     data.data.forEach(_data => {
-                        this.clients.push(_data);
+                        this.clients.push(this.formatData(_data));
                     })
                 })
         },
-        addClient(client){
-            console.log("Client :" + client);
-            this.clients.push(client);
+        addClient(client) {
+            this.clients.push(this.formatData(client));
+        }
+        ,
+        formatData(data) {
+            return {
+                nom: data.nom,
+                adresse: data.adresse.adresse,
+                code_postal: data.adresse.code_postal,
+                ville: data.adresse.ville,
+                nomContact: data.contacts[0].nom,
+                prenom: data.contacts[0].prenom,
+                numero: data.contacts[0].tel,
+                email: data.contacts[0].email,
+                poste: data.contacts[0].poste,
+            }
         }
     },
     created() {

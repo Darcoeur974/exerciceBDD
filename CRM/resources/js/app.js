@@ -5,7 +5,7 @@
  */
 
 import Vue from 'vue';
-import Vuetify from 'vuetify/lib';
+import Vuetify from 'vuetify';
 
 import Routes from './route.js';
 import Layout from './layouts/Layout.vue';
@@ -14,8 +14,9 @@ Vue.use(Vuetify);
 
 const app = new Vue({
     el: '#app',
+    vuetify: new Vuetify({}),
     router: Routes,
     components: { Layout }
 });
 
-export default app;
+export default new Vuetify(app);
