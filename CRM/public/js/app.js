@@ -1877,7 +1877,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      clients: []
+      clients: [],
+      variableParent: 'Toto est là!'
     };
   },
   methods: {
@@ -1887,11 +1888,15 @@ __webpack_require__.r(__webpack_exports__);
       this.clients = [];
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/clients').then(function (_ref) {
         var data = _ref.data;
-        console.log(data);
+        console.log("Data :" + data);
         data.data.forEach(function (_data) {
           _this.clients.push(_data);
         });
       });
+    },
+    addClient: function addClient(client) {
+      console.log("Client :" + client);
+      this.clients.push(client);
     }
   },
   created: function created() {
@@ -1914,6 +1919,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['variableEnfant'],
   data: function data() {
     return {
       nom: null,
@@ -1921,32 +1927,31 @@ __webpack_require__.r(__webpack_exports__);
       code_postal: null,
       ville: null,
       nomContact: null,
-      prenomContact: null,
-      telContact: null,
-      emailContact: null,
+      prenom: null,
+      tel: null,
+      email: null,
       poste: null
     };
   },
   methods: {
-    validationFormulaire: function validationFormulaire() {
+    validationFormulaire: function validationFormulaire(e) {
       var _this = this;
 
+      e.preventDefault();
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/clients/store', {
         nom: this.nom,
         adresse: this.adresse,
         code_postal: this.code_postal,
         ville: this.ville,
-        nomContact: this.nunomContactll,
-        prenomContact: this.prenomContact,
-        telContact: this.nutelContactll,
-        emailContact: this.emailContact,
+        nomEntreprise: this.nomContact,
+        prenom: this.prenom,
+        tel: this.tel,
+        email: this.email,
         poste: this.poste
       }).then(function (_ref) {
         var data = _ref.data;
-        console.log(data);
-        data.data.forEach(function (_data) {
-          _this.clients.push(_data);
-        });
+
+        _this.$emit('submitFormulaire', data.data);
       });
     }
   }
@@ -3752,7 +3757,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ninput {\n    border: 1px black solid;\n}\n.submit {\n    padding: 5px;\n}\n", ""]);
+exports.push([module.i, "\ninput {\n  border: 1px black solid;\n}\n.submit {\n  padding: 5px;\n}\n", ""]);
 
 // exports
 
@@ -4919,7 +4924,14 @@ var render = function() {
     [
       _c("h1", [_vm._v("Client")]),
       _vm._v(" "),
-      _c("formulaire"),
+      _c("formulaire", {
+        attrs: { variableEnfant: _vm.variableParent },
+        on: {
+          submitFormulaire: function($event) {
+            return _vm.addClient($event)
+          }
+        }
+      }),
       _vm._v(" "),
       _c("table", [
         _c("br"),
@@ -4982,7 +4994,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("Ajouter un client")]),
+    _c("h1", [_vm._v(_vm._s(_vm.variableEnfant))]),
     _vm._v(" "),
     _c(
       "form",
@@ -5024,16 +5036,204 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _vm._m(1),
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.adresse,
+                      expression: "adresse"
+                    }
+                  ],
+                  attrs: { type: "text", id: "adresse", name: "adresse" },
+                  domProps: { value: _vm.adresse },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.adresse = $event.target.value
+                    }
+                  }
+                })
+              ]),
               _vm._v(" "),
-              _vm._m(2),
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.code_postal,
+                      expression: "code_postal"
+                    }
+                  ],
+                  attrs: {
+                    type: "text",
+                    id: "code_postal",
+                    name: "code_postal"
+                  },
+                  domProps: { value: _vm.code_postal },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.code_postal = $event.target.value
+                    }
+                  }
+                })
+              ]),
               _vm._v(" "),
-              _vm._m(3)
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.ville,
+                      expression: "ville"
+                    }
+                  ],
+                  attrs: { type: "text", id: "ville", name: "ville" },
+                  domProps: { value: _vm.ville },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.ville = $event.target.value
+                    }
+                  }
+                })
+              ])
             ])
           ])
         ]),
         _vm._v(" "),
-        _vm._m(4),
+        _c("table", [
+          _vm._m(1),
+          _vm._v(" "),
+          _c("tbody", [
+            _c("tr", [
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.nomContact,
+                      expression: "nomContact"
+                    }
+                  ],
+                  attrs: { type: "text", id: "nomContact", name: "nomContact" },
+                  domProps: { value: _vm.nomContact },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.nomContact = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.prenom,
+                      expression: "prenom"
+                    }
+                  ],
+                  attrs: { type: "text", id: "prenom", name: "prenom" },
+                  domProps: { value: _vm.prenom },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.prenom = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.tel,
+                      expression: "tel"
+                    }
+                  ],
+                  attrs: { type: "text", id: "tel", name: "tel" },
+                  domProps: { value: _vm.tel },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.tel = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.email,
+                      expression: "email"
+                    }
+                  ],
+                  attrs: { type: "text", id: "email", name: "email" },
+                  domProps: { value: _vm.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.email = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.poste,
+                      expression: "poste"
+                    }
+                  ],
+                  attrs: { type: "text", id: "poste", name: "poste" },
+                  domProps: { value: _vm.poste },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.poste = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ])
+          ])
+        ]),
         _vm._v(" "),
         _c("input", { attrs: { type: "submit", value: "submit" } })
       ]
@@ -5069,98 +5269,32 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("input", { attrs: { type: "text", id: "adresse", name: "adresse" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("input", {
-        attrs: { type: "text", id: "code_postal", name: "code_postal" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("input", { attrs: { type: "text", id: "ville", name: "ville" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("table", [
-      _c("thead", [
-        _c("tr", [
-          _c("th", [
-            _c("label", { attrs: { for: "nomContact" } }, [
-              _vm._v("Nom du contact :")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("th", [
-            _c("label", { attrs: { for: "prenomContact" } }, [
-              _vm._v("Preom du contact :")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("th", [
-            _c("label", { attrs: { for: "telContact" } }, [
-              _vm._v("Numero de telephone :")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("th", [
-            _c("label", { attrs: { for: "emailContact" } }, [
-              _vm._v("E-mail :")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("th", [
-            _c("label", { attrs: { for: "poste" } }, [_vm._v("Poste :")])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [
+          _c("label", { attrs: { for: "nomContact" } }, [
+            _vm._v("Nom du contact :")
           ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("tbody", [
-        _c("tr", [
-          _c("td", [
-            _c("input", {
-              attrs: { type: "text", id: "nomContact", name: "nomContact" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("td", [
-            _c("input", {
-              attrs: {
-                type: "text",
-                id: "prenomContact",
-                name: "prenomContact"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("td", [
-            _c("input", {
-              attrs: { type: "text", id: "telContact", name: "telContact" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("td", [
-            _c("input", {
-              attrs: { type: "text", id: "emailContact", name: "emailContact" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("td", [
-            _c("input", { attrs: { type: "text", id: "poste", name: "poste" } })
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c("label", { attrs: { for: "prenom" } }, [
+            _vm._v("Prenom du contact :")
           ])
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c("label", { attrs: { for: "tel" } }, [
+            _vm._v("Numero de telephone :")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c("label", { attrs: { for: "email" } }, [_vm._v("E-mail :")])
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c("label", { attrs: { for: "poste" } }, [_vm._v("Poste :")])
         ])
       ])
     ])
@@ -57507,15 +57641,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************************************!*\
   !*** ./resources/js/components/Formulaire.vue ***!
   \************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Formulaire_vue_vue_type_template_id_5e89b23e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Formulaire.vue?vue&type=template&id=5e89b23e& */ "./resources/js/components/Formulaire.vue?vue&type=template&id=5e89b23e&");
 /* harmony import */ var _formulaire_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./formulaire.js?vue&type=script&lang=js& */ "./resources/js/components/formulaire.js?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _formulaire_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _formulaire_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -57630,7 +57763,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************************************************************!*\
   !*** ./resources/js/components/formulaire.js?vue&type=script&lang=js& ***!
   \************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

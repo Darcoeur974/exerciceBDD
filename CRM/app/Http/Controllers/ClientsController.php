@@ -58,13 +58,24 @@ class ClientsController extends Controller
             'email' => $validator['email'],
             'poste' => $validator['poste']
         ];
-
-        DB::transaction(function ()  use ($adresse, $client, $contact) {
+        $clientRetour = [];
+        DB::transaction(function ()  use ($adresse, $client, $contact,&$clientRetour) {
             $adresseRetour = AdressesModel::create($adresse);
             $clientRetour = $adresseRetour->client()->create($client);
             $contactRetour = $clientRetour->contacts()->create($contact);
         });
 
-        return json_encode($validator);
+        $client = ClientsModel::with([
+            'contacts',
+            'adresse',
+            'projets',
+            'commentaires' => function($q){
+                $q->with('type');
+            }
+        ])
+            ->where('id', $clientRetour->id)
+        ->first();
+
+        return new ClientsRessource($client);
     }
 }

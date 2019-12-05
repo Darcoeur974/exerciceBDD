@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export default {
+    props: ['variableEnfant'],
     data() {
         return {
             nom: null,
@@ -8,31 +9,29 @@ export default {
             code_postal: null,
             ville: null,
             nomContact: null,
-            prenomContact: null,
-            telContact: null,
-            emailContact: null,
+            prenom: null,
+            tel: null,
+            email: null,
             poste: null
         }
     },
     methods: {
-        validationFormulaire() {
+        validationFormulaire(e) {
+            e.preventDefault();
             axios.post('/api/clients/store', {
                 nom: this.nom,
                 adresse: this.adresse,
                 code_postal: this.code_postal,
                 ville: this.ville,
-                nomContact: this.nunomContactll,
-                prenomContact: this.prenomContact,
-                telContact: this.nutelContactll,
-                emailContact: this.emailContact,
+                nomEntreprise: this.nomContact,
+                prenom: this.prenom,
+                tel: this.tel,
+                email: this.email,
                 poste: this.poste
 
             })
                 .then(({ data }) => {
-                    console.log(data);
-                    data.data.forEach(_data => {
-                        this.clients.push(_data);
-                    })
+                    this.$emit('submitFormulaire',data.data);
                 })
         },
     }
